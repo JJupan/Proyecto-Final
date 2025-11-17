@@ -11,5 +11,8 @@ El sistema permite crear, listar, actualizar, buscar y eliminar estudiantes medi
 
 1. Clonar el repositorio  
 2. Abrir en IntelliJ IDEA o cualquier IDE con soporte para Spring Boot  
-3. Ejecutar la clase:
+3. Ejecutar la clase: StudentApiApplication.jav
+4. Abrir tu localhost:8080
+
+
 
