@@ -1,13 +1,20 @@
 const API_URL = "http://localhost:8080/students";
 
+let studentCache = [];
+
 document.addEventListener("DOMContentLoaded", loadStudents);
+
 
 function loadStudents() {
     fetch(API_URL)
         .then(res => res.json())
-        .then(data => renderTable(data))
+        .then(data => {
+            studentCache = data;
+            renderTable(studentCache);
+        })
         .catch(() => Swal.fire("Error", "No se pudieron cargar los estudiantes", "error"));
 }
+
 
 function renderTable(students) {
     const tbody = document.getElementById("studentsTableBody");
@@ -34,11 +41,13 @@ function renderTable(students) {
     });
 }
 
+
 function openCreateModal() {
     document.getElementById("studentForm").reset();
     document.getElementById("studentId").value = "";
     $("#studentModal").modal("show");
 }
+
 
 document.getElementById("studentForm").addEventListener("submit", e => {
     e.preventDefault();
@@ -54,6 +63,7 @@ document.getElementById("studentForm").addEventListener("submit", e => {
 
     id ? updateStudent(id, student) : createStudent(student);
 });
+
 
 function createStudent(student) {
     fetch(API_URL, {
@@ -73,6 +83,7 @@ function createStudent(student) {
         .catch(() => Swal.fire("Error", "Correo ya existente o datos inválidos", "error"));
 }
 
+
 function editStudent(id) {
     fetch(`${API_URL}/${id}`)
         .then(res => res.json())
@@ -86,6 +97,7 @@ function editStudent(id) {
             $("#studentModal").modal("show");
         });
 }
+
 
 function updateStudent(id, student) {
     fetch(`${API_URL}/${id}`, {
@@ -102,8 +114,9 @@ function updateStudent(id, student) {
             Swal.fire("Éxito", "Estudiante actualizado", "success");
             loadStudents();
         })
-        .catch(() => Swal.fire("Error", "No se pudo actualizar (correo duplicado)", "error"));
+        .catch(() => Swal.fire("Error", "Correo duplicado o datos inválidos", "error"));
 }
+
 
 function deleteStudent(id) {
     Swal.fire({
@@ -124,3 +137,17 @@ function deleteStudent(id) {
         }
     });
 }
+
+
+document.getElementById("searchInput").addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+
+    const filtered = studentCache.filter(s =>
+        s.nombre.toLowerCase().includes(query) ||
+        s.correo.toLowerCase().includes(query) ||
+        s.numeroTelefono.toLowerCase().includes(query) ||
+        s.idioma.toLowerCase().includes(query)
+    );
+
+    renderTable(filtered);
+});

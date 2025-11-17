@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Gestión de Estudiantes - SB Admin 2</title>
+    <title>Gestión de Estudiantes</title>
 
     <!-- SB Admin 2 / Bootstrap 4 / FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.min.css"
           rel="stylesheet">
 
-
+    <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
@@ -22,7 +22,6 @@
 </head>
 
 <body id="page-top">
-
 
 <div id="wrapper">
 
@@ -57,19 +56,25 @@
 
 
             <nav class="navbar navbar-expand navbar-light bg-white topbar shadow">
-
                 <h4 class="m-0 font-weight-bold text-primary">Administración de Estudiantes</h4>
-
             </nav>
-
+            <
 
 
             <div class="container-fluid mt-4">
 
-
+                <!-- boton Crear -->
                 <button class="btn btn-primary mb-3" onclick="openCreateModal()">
                     <i class="fas fa-plus"></i> Nuevo Estudiante
                 </button>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    </div>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Buscar estudiante...">
+                </div>
 
 
                 <div class="card shadow">
@@ -94,7 +99,7 @@
                 </div>
 
             </div>
-
+            <!-- End Main Content -->
 
         </div>
 
@@ -131,6 +136,8 @@
                     <select id="idioma" class="form-control" required>
                         <option value="español">Español</option>
                         <option value="inglés">Inglés</option>
+                        <option value="francés">francés</option>
+
                     </select>
 
                 </div>

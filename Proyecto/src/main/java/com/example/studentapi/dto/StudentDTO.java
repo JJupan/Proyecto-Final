@@ -23,15 +23,14 @@ public class StudentDTO {
     private String correo;
 
     @NotBlank(message = "Número de teléfono obligatorio")
-    @Pattern(regexp = "\\d{8}", message = "Debe tener exactamente 8 dígitos")
+    @Pattern(regexp = "\\d{10}", message = "Debe tener exactamente 10 dígitos")
     private String numeroTelefono;
 
     @NotBlank(message = "Idioma obligatorio")
     @Pattern(
-            regexp = "inglés|español",
+            regexp = "inglés|español|francés",
             flags = Pattern.Flag.CASE_INSENSITIVE,
-            message = "Idioma debe ser: inglés o español"
+            message = "Idioma debe ser: inglés, español o francés"
     )
     private String idioma;
-
 }
