@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Estudiantes - SB Admin 2</title>
+
+    <!-- SB Admin 2 / Bootstrap 4 / FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.min.css"
+          rel="stylesheet">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        #studentsTable td,
+        #studentsTable th {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+
+
+<div id="wrapper">
+
+
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion">
+
+        <a class="sidebar-brand d-flex align-items-center justify-content-center">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Estudiantes</div>
+        </a>
+
+        <hr class="sidebar-divider my-0">
+
+        <li class="nav-item active">
+            <a class="nav-link">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Gestión de Estudiantes</span>
+            </a>
+        </li>
+
+        <hr class="sidebar-divider d-none d-md-block">
+
+    </ul>
+
+
+
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <div id="content">
+
+
+            <nav class="navbar navbar-expand navbar-light bg-white topbar shadow">
+
+                <h4 class="m-0 font-weight-bold text-primary">Administración de Estudiantes</h4>
+
+            </nav>
+
+
+
+            <div class="container-fluid mt-4">
+
+
+                <button class="btn btn-primary mb-3" onclick="openCreateModal()">
+                    <i class="fas fa-plus"></i> Nuevo Estudiante
+                </button>
+
+
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Listado de Estudiantes</h6>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered" id="studentsTable">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Teléfono</th>
+                                <th>Idioma</th>
+                                <th>Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody id="studentsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="studentModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <form id="studentForm">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Estudiante</h5>
+                    <button class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+
+                    <input type="hidden" id="studentId">
+
+                    <label>Nombre</label>
+                    <input type="text" id="nombre" class="form-control" required>
+
+                    <label class="mt-2">Correo</label>
+                    <input type="email" id="correo" class="form-control" required>
+
+                    <label class="mt-2">Número de Teléfono</label>
+                    <input type="text" id="numero_telefono" class="form-control" required>
+
+                    <label class="mt-2">Idioma</label>
+                    <select id="idioma" class="form-control" required>
+                        <option value="español">Español</option>
+                        <option value="inglés">Inglés</option>
+                    </select>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary" type="submit">Guardar</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/js/sb-admin-2.min.js"></script>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
